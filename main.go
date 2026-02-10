@@ -22,6 +22,8 @@ func main() {
 	fmt.Println("Strength :", result.Strength)
 	fmt.Println("Score    :", result.Score, "/ 5")
 
+	//smtg new
+
 	if len(result.Reasons) > 0 {
 		fmt.Println("\nSuggestions:")
 		for _, r := range result.Reasons {
