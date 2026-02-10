@@ -1,25 +1,28 @@
-SETUP & RUN (USING DOCKER)
+## 🐳 Setup & Run (Using Docker)
 
-1. Clone the Repository
+### 1. Clone the Repository
 
-   git clone https://github.com/NischitEkbote/pwd-checker.git
-   cd pwd-checker
+```bash
+git clone https://github.com/NischitEkbote/pwd-checker.git
+cd pwd-checker
+```
 
-   This downloads the project and navigates into the project directory.
+This downloads the project and navigates into the project directory.
 
-2. Build the Docker Image
+### 2. Build the Docker Image
 
-   docker build -t pwd-checker .
+```bash
+docker build -t pwd-checker .
+```
 
-   This command:
-   - Reads the Dockerfile in the current directory
-   - Builds the Go binary inside a Docker container
-   - Creates a Docker image named "pwd-checker"
+Reads the Dockerfile in the current directory
 
-3. Run the Password Checker
+Builds the Go binary inside a Docker container
 
-   docker run pwd-checker --pass "Hello123!"
+Creates a Docker image named pwd-checker
 
-   This starts a container from the pwd-checker image,
-   passes the password as a command-line argument,
-   and displays the password strength result.
+### 3. Run the Password Checker
+
+```bash
+docker run --rm pwd-checker --pass "Hello123!"
+```
