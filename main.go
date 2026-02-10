@@ -16,7 +16,7 @@ func main() {
 	}
 
 	result := checkPassword(*pass)
-
+//smtg new 2 
 	fmt.Println("Password Strength Check")
 	fmt.Println("")
 	fmt.Println("Strength :", result.Strength)
