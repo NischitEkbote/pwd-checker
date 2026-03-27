@@ -3,20 +3,42 @@ name: Release
 on:
   push:
     tags:
-      - "v*"   # triggers on v1.0.0, v1.2.3, etc.
+      - "v*"
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # REQUIRED to create release
+      contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build binaries
+        run: |
+          mkdir -p bin
+
+          # Linux
+          GOOS=linux GOARCH=amd64 go build -o bin/cli-linux ./cmd/cli
+
+          # Mac
+          GOOS=darwin GOARCH=amd64 go build -o bin/cli-mac ./cmd/cli
+
+          # Windows
+          GOOS=windows GOARCH=amd64 go build -o bin/cli.exe ./cmd/cli
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          files: |
+            bin/cli-linux
+            bin/cli-mac
+            bin/cli.exe
           generate_release_notes: true
